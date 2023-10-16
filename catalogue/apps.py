@@ -33,7 +33,7 @@ class CatalogueConfig(apps.CatalogueConfig):
         
 
     def get_urls(self):
-        urls = []
+        urls = super(CatalogueConfig, self).get_urls()
         urls += [
             # url(r'^$', self.homepage_view.as_view(), name='index'),
             # url(r'^product/$', self.catalogue_view.as_view(), name='product_list'),
