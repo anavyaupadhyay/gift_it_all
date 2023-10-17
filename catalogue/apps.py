@@ -11,8 +11,8 @@ class CatalogueConfig(apps.CatalogueConfig):
     def ready(self):
         super().ready()
         
-        # self.detail_view = get_class('catalogue.views', 'ProductDetailsView')
-        # self.catalogue_view = get_class('catalogue.views', 'ProductListView')
+        self.detail_view = get_class('catalogue.views', 'CustomProductDetailView')
+        self.catalogue_view = get_class('catalogue.views', 'ProductListView')
         # # self.homepage_view = get_class('catalogue.views', 'HomepageView')
         # self.site_latest_product_view = get_class('catalogue.views', 'SiteLatestProductView')
         # # self.aboutus_view = get_class('catalogue.views','AboutUsView')
@@ -36,9 +36,9 @@ class CatalogueConfig(apps.CatalogueConfig):
         urls = super(CatalogueConfig, self).get_urls()
         urls += [
             # url(r'^$', self.homepage_view.as_view(), name='index'),
-            # url(r'^product/$', self.catalogue_view.as_view(), name='product_list'),
-            # url(r'^(?P<product_slug>[\w-]*)_(?P<pk>\d+)/$',
-            #     self.detail_view.as_view(), name='detail'),
+            url(r'^products/$', self.catalogue_view.as_view(), name='product_list'),
+            url(r'^(?P<product_slug>[\w-]*)_(?P<pk>\d+)/$',
+                self.detail_view.as_view(), name='detail'),
             # url(r'^category/(?P<category_slug>[\w-]+(/[\w-]+)*)_(?P<pk>\d+)/$',
             #     self.category_view.as_view(), name='category'),
             # url(r'^latest_product/$', self.site_latest_product_view.as_view(), name='site_latest_product'),
