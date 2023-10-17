@@ -65,5 +65,18 @@ class ProductListView(ListView):
 
         return super().dispatch(request, *args, **kwargs)
     
+class ProductDetailView(TemplateView):
+    """
+    A view for display all the product in a website
+    """
+    template_name =  'website/product_detail.html'
+    slug_url_kwarg = 'slug'
+    slug_field = 'slug'   
+   
+    def get_context_data(self, *args, **kwargs):
+        context = super( ProductDetailView, self).get_context_data(*args, **kwargs)
+        context['product']=Product.objects.get(slug=self.kwargs['slug'])
+        return context 
+    
 
     
