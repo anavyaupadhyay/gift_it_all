@@ -13,13 +13,22 @@
             <!-- Product Images Start -->
             <div class="col-lg-6 col-12 learts-mb-40">
                 <div class="product-images">
-                    <button class="product-gallery-popup hintT-left" data-hint="Click to enlarge" data-images='[
+                    <button class="product-gallery-popup hintT-left" data-hint="Click to enlarge"
+                    
+                     data-images=   
+                     
+                     '[
+
                         {"src": "assets/images/product/single/7/product-zoom-1.webp", "w": 700, "h": 1100},
                         {"src": "assets/images/product/single/7/product-zoom-2.webp", "w": 700, "h": 1100},
                         {"src": "assets/images/product/single/7/product-zoom-3.webp", "w": 700, "h": 1100},
                         {"src": "assets/images/product/single/7/product-zoom-1.webp", "w": 700, "h": 1100}
-                    ]'><i class="fas fa-expand"></i></button>
-                    <a href="#product-360-viewer" data-bs-toggle="modal" class="toggle-360 hintT-left" data-hint="360 product"><img src= "{% static 'assets/images/icons/360.webp' %}" alt=""></a>
+                    ]'
+                    
+                    >
+                    <i class="fas fa-expand"></i></button>
+                    <a href="#product-360-viewer" data-bs-toggle="modal" class="toggle-360 hintT-left" data-hint="360 product">
+                        <img src= "{% static 'assets/images/icons/360.webp' %}" alt=""></a>
                     <div class="product-gallery-slider">
                         <div class="product-zoom" data-image="assets/images/product/single/7/product-zoom-1.webp">
                             <img src="assets/images/product/single/7/product-1.webp" alt="">
@@ -75,22 +84,16 @@
             <!-- Product Summery Start -->
             <div class="col-lg-6 col-12 learts-mb-40">
                 <div class="product-summery">
-                    <div class="product-nav">
-                        <a href="#"><i class="fas fa-long-arrow-alt-left"></i></a>
-                        <a href="#"><i class="fas fa-long-arrow-alt-right"></i></a>
-                    </div>
+
                     <div class="product-ratings">
                         <span class="star-rating">
                             <span class="rating-active" style="width: 100%;">ratings</span>
                         </span>
                         <a href="#reviews" class="review-link">(<span class="count">3</span> customer reviews)</a>
                     </div>
-                    <h3 class="product-title">Motorized Tricycle</h3>
-                    <div class="product-price">£35.00</div>
-                    <div class="product-description">
-                        <p>With the stability and safety of having a three wheels；durable 6061 aluminum alloy frame; suspension fork cushions the ride when you encounter bumps. The 750w motor has excellent power to reach speeds up to 23 mph and with a single charge of the battery the bike can run up to 40-55 miles using level one pedal assist.</p>
-                        <p>Due to the controllability of electric trike is stronger than the normal electric bike. Please test the bike in the secure room, garden, or square for 2 hours before rode it on the road, pavement, hills, and beach etc.</p>
-                    </div>
+                    <h3 class="product-title">{{product.title}}</h3>
+                    <div class="product-price">${{product.stockrecords.first.price}}</div>
+                    <div class="product-description">{{product.description|striptags}} </div>
                     <div class="product-variations">
                         <table>
                             <tbody>
@@ -111,13 +114,6 @@
                         <a href="#" class="btn btn-icon btn-outline-body btn-hover-dark hintT-top" data-hint="Add to Wishlist"><i class="far fa-heart"></i></a>
                         <a href="#" class="btn btn-dark btn-outline-hover-dark"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
                         <a href="#" class="btn btn-icon btn-outline-body btn-hover-dark hintT-top" data-hint="Compare"><i class="fas fa-random"></i></a>
-                    </div>
-                    <div class="product-brands">
-                        <span class="title">Brands</span>
-                        <div class="brands">
-                            <a href="#"><img src="assets/images/brands/brand-4.webp" alt=""></a>
-                            <a href="#"><img src="assets/images/brands/brand-6.webp" alt=""></a>
-                        </div>
                     </div>
                     <div class="product-meta">
                         <table>
@@ -165,7 +161,7 @@
                         </table>
                     </div>
                 </div>
-            </div>
+        </div>
             <!-- Product Summery End -->
 
         </div>
@@ -175,7 +171,7 @@
 <!-- Single Products Section End -->
 
 <!-- Single Products Infomation Section Start -->
-<div class="section section-padding border-bottom">
+<!-- <div class="section section-padding border-bottom">
     <div class="container">
 
         <ul class="nav product-info-tab-list">
@@ -313,7 +309,7 @@
         </div>
 
     </div>
-</div>
+</div> -->
 <!-- Single Products Infomation Section End -->
 
 <!-- Recommended Products Section Start -->

@@ -41,9 +41,9 @@ class ProductListView(ListView):
         if category_slug and not Category.objects.filter(slug=category_slug).exists() and Product.objects.filter(slug=category_slug).exists():
             prod_obj = Product.objects.filter(slug=category_slug).first()
             if prod_obj and prod_obj.structure == "child" and prod_obj.parent:
-                return HttpResponseRedirect(reverse('catalogue:detail', kwargs={'slug': prod_obj.parent.slug}))
+                return HttpResponseRedirect(reverse('website:product_detail', kwargs={'slug': prod_obj.parent.slug}))
             else:
-                return HttpResponseRedirect(reverse('catalogue:detail', kwargs={'slug': category_slug}))   
+                return HttpResponseRedirect(reverse('website:product_detail', kwargs={'slug': category_slug}))   
 
         if category_slug and not Category.objects.filter(slug=category_slug).exists():
             return HttpResponseRedirect(reverse('website:product_list'))    
@@ -59,8 +59,19 @@ class ProductDetailView(TemplateView):
     slug_field = 'slug'   
    
     def get_context_data(self, *args, **kwargs):
-        context = super( ProductDetailView, self).get_context_data(*args, **kwargs)
+        context = super(ProductDetailView, self).get_context_data(*args, **kwargs)
         context['product']=Product.objects.get(slug=self.kwargs['slug'])
         return context 
     
+class LoginView(TemplateView):
+     template_name =  'website/login.html'
 
+
+
+class ContactView(TemplateView):
+     template_name =  'website/contact_us.html'
+
+
+
+class CartView(TemplateView):
+     template_name =  'website/cart.html'
