@@ -1,6 +1,0 @@
-services:
-  - type: web
-    name: gift_it_all
-    buildCommand: "./build.sh"
-    env: python
-    startCommand: "gunicorn gift_it_all.wsgi:application"
