@@ -29,7 +29,7 @@ SECRET_KEY = 'y#(*w%d^&az_8p)$3#)3-oh5=s=vctxy&#(sonuk$ge+a-*-zs'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["gift-it-all.onrender.com"]
 
 
 # Application definition
