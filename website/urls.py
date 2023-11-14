@@ -1,6 +1,7 @@
-from django.urls import path
+from django.urls import path, include
 
 from website.views import CartView, CheckoutView, ContactView, HomePageView, LoginView, ProductListView, ProductDetailView
+from oscar.apps.basket import views as basket_views
 
 app_name = 'website'
 urlpatterns = [
@@ -13,6 +14,8 @@ urlpatterns = [
   path("contact_us",ContactView.as_view(), name='contact_us'),
   path("cart",CartView.as_view(), name='cart'),
   path("checkout",CheckoutView.as_view(), name='checkout'),
-
-
+  path('basket/add/<int:product_id>/', basket_views.BasketAddView.as_view(), name='basket-add'),
+  # path('basket/remove/<int:line_id>/', basket_views.BasketRe, name='basket-remove'),
+  path('basket/summary/', basket_views.BasketView.as_view(), name='basket-summary'),
+  path("api/", include("website.api.urls")),
 ]

@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 
 import os
 
+import dj_database_url
+
 from oscar.defaults import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -27,7 +29,7 @@ SECRET_KEY = 'y#(*w%d^&az_8p)$3#)3-oh5=s=vctxy&#(sonuk$ge+a-*-zs'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["gift-it-all.onrender.com"]
 
 
 # Application definition
@@ -45,20 +47,17 @@ INSTALLED_APPS = [
 
     'oscar.config.Shop',
     'oscar.apps.analytics.apps.AnalyticsConfig',
-    'oscar.apps.checkout.apps.CheckoutConfig',
+    # 'oscar.apps.checkout.apps.CheckoutConfig',
     'oscar.apps.address.apps.AddressConfig',
     'oscar.apps.shipping.apps.ShippingConfig',
     # 'oscar.apps.catalogue.apps.CatalogueConfig',
-    'catalogue.apps.CatalogueConfig',
     'oscar.apps.catalogue.reviews.apps.CatalogueReviewsConfig',
     'oscar.apps.communication.apps.CommunicationConfig',
     'oscar.apps.partner.apps.PartnerConfig',
     # 'oscar.apps.basket.apps.BasketConfig',
-    'basket.apps.BasketConfig',
     'oscar.apps.payment.apps.PaymentConfig',
     'oscar.apps.offer.apps.OfferConfig',
     # 'oscar.apps.order.apps.OrderConfig',
-    'order.apps.OrderConfig',
     'oscar.apps.customer.apps.CustomerConfig',
     'oscar.apps.search.apps.SearchConfig',
     'oscar.apps.voucher.apps.VoucherConfig',
@@ -83,13 +82,27 @@ INSTALLED_APPS = [
     'treebeard',
     'sorl.thumbnail',   # Default thumbnail backend, can be replaced
     'django_tables2',
+    'rest_framework',
+    'rest_framework.authtoken',
+    # 'oscarapi',
+
+    # GIFT_IT_ALL apps
+    'accounts',
+    'website',
+    #forked apps
+    'catalogue.apps.CatalogueConfig',
+    'basket.apps.BasketConfig',
+    'checkout.apps.CheckoutConfig',
+    'order.apps.OrderConfig',
 ]
+
 
 SITE_ID = 1
 
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -139,18 +152,20 @@ WSGI_APPLICATION = 'gift_it_all.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'gift_it_all',
+#         'USER': 'postgres',
+#         'PASSWORD': 'Pass@postgres',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#         'ATOMIC_REQUEST': True,
+#     }
+# }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'gift_it_all',
-        'USER': 'postgres',
-        'PASSWORD': 'Pass@postgres',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-        'ATOMIC_REQUEST': True,
-    }
+	"default": dj_database_url.parse("postgres://aminick21:VXQv7ra4QFXPCMWVfHFMBKzfKc2INfJS@dpg-cl58b7982rpc739mq0jg-a.singapore-postgres.render.com/gift_it_all")
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -171,9 +186,11 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTHENTICATION_BACKENDS = (
-    'oscar.apps.customer.auth_backends.EmailBackend',
     'django.contrib.auth.backends.ModelBackend',
+    'accounts.backends.EmailBackend',
 )
+
+AUTH_USER_MODEL = 'accounts.User'
 
 HAYSTACK_CONNECTIONS = {
     'default': {
@@ -224,6 +241,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'), 
 )
+# STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # OSCAR SETTINGS
 OSCAR_SHOP_NAME = 'GIFT IT ALL'
