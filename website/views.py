@@ -6,10 +6,10 @@ from django.views.generic import (
     DetailView,
 )
 from django.db.models import Q
+from catalogue.models import Product
 
 from oscar.core.loading import get_class, get_model
 
-Product = get_model('catalogue', 'product')
 Category = get_model('catalogue', 'category')
 
 # Create your views here.
@@ -30,7 +30,7 @@ class ProductListView(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(ProductListView, self).get_context_data(*args, **kwargs)
-        products =  Product.objects.all()
+        products =  Product.objects.filter(is_active=True).exclude(structure='child').order_by('-id')
         category_slug = self.kwargs.get('slug', None)
         context['products']= products
         if category_slug and Category.objects.filter(slug=category_slug).exists():
@@ -69,7 +69,9 @@ class ProductDetailView(TemplateView):
         context = super(ProductDetailView, self).get_context_data(*args, **kwargs)
         products =  Product.objects.all()
         context['product']=products.get(slug=self.kwargs['slug'])
-        context['products']= products.filter(~Q(slug=self.kwargs['slug']))
+        if not context['product'].is_parent:
+            context['product']=context['product'].parent
+        context['products']= products.filter(~Q(slug=self.kwargs['slug']), is_active = True).exclude(structure='child').order_by('-id')
         return context 
     
 class LoginView(TemplateView):

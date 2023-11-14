@@ -29,7 +29,7 @@ SECRET_KEY = 'y#(*w%d^&az_8p)$3#)3-oh5=s=vctxy&#(sonuk$ge+a-*-zs'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["gift-it-all.onrender.com"]
+ALLOWED_HOSTS = ["gift-it-all.onrender.com", "127.0.0.1"]
 
 
 # Application definition
@@ -62,11 +62,11 @@ INSTALLED_APPS = [
     'oscar.apps.search.apps.SearchConfig',
     'oscar.apps.voucher.apps.VoucherConfig',
     'oscar.apps.wishlists.apps.WishlistsConfig',
-    'oscar.apps.dashboard.apps.DashboardConfig',
+    # 'oscar.apps.dashboard.apps.DashboardConfig',
     'oscar.apps.dashboard.reports.apps.ReportsDashboardConfig',
     'oscar.apps.dashboard.users.apps.UsersDashboardConfig',
     'oscar.apps.dashboard.orders.apps.OrdersDashboardConfig',
-    'oscar.apps.dashboard.catalogue.apps.CatalogueDashboardConfig',
+    # 'oscar.apps.dashboard.catalogue.apps.CatalogueDashboardConfig',
     'oscar.apps.dashboard.offers.apps.OffersDashboardConfig',
     'oscar.apps.dashboard.partners.apps.PartnersDashboardConfig',
     'oscar.apps.dashboard.pages.apps.PagesDashboardConfig',
@@ -94,6 +94,8 @@ INSTALLED_APPS = [
     'basket.apps.BasketConfig',
     'checkout.apps.CheckoutConfig',
     'order.apps.OrderConfig',
+    'dashboard.apps.DashboardConfig',
+    'dashboard.catalogue.apps.CatalogueDashboardConfig',
 ]
 
 
