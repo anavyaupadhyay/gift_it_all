@@ -1,15 +1,10 @@
 {% extends "components/frame.html" %}
+{% load static %}
 
 {% block page-content %}
  
-
-
-
-
-
     <div class="offcanvas-overlay"></div>
 
-   
 
     <!-- Page Title/Header End -->
 
@@ -17,7 +12,7 @@
     <div class="section section-padding pt-0">
 
         <!-- Shop Toolbar Start -->
-        <div class="shop-toolbar section-fluid border-bottom">
+        <div class="shop-toolbar section-fluid border-top">
             <div class="container">
                 <div class="row learts-mb-n20">
 
@@ -156,7 +151,7 @@
                   
 
                     <div class="grid-sizer col-1"></div>
-                    {% for product in object_list %}
+                    {% for product in products %}
                     <div class="grid-item">
                         <div class="product">
                             <div class="product-thumb">

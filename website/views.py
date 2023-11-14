@@ -5,6 +5,7 @@ from django.views.generic import (
     ListView,
     DetailView,
 )
+from django.db.models import Q
 
 from oscar.core.loading import get_class, get_model
 
@@ -24,11 +25,17 @@ class HomePageView(TemplateView):
         context['products']=Product.objects.all()
         return context      
 
-class ProductListView(ListView):
-    model = Product
+class ProductListView(TemplateView):
     template_name = 'website/product_list.html'
-    paginate_by = 20
-    total_product = 0
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(ProductListView, self).get_context_data(*args, **kwargs)
+        products =  Product.objects.all()
+        category_slug = self.kwargs.get('slug', None)
+        context['products']= products
+        if category_slug and Category.objects.filter(slug=category_slug).exists():
+            context['products']= products.filter(categories__slug=category_slug)
+        return context 
 
 
     def dispatch(self, request, *args, **kwargs):
@@ -60,7 +67,9 @@ class ProductDetailView(TemplateView):
    
     def get_context_data(self, *args, **kwargs):
         context = super(ProductDetailView, self).get_context_data(*args, **kwargs)
-        context['product']=Product.objects.get(slug=self.kwargs['slug'])
+        products =  Product.objects.all()
+        context['product']=products.get(slug=self.kwargs['slug'])
+        context['products']= products.filter(~Q(slug=self.kwargs['slug']))
         return context 
     
 class LoginView(TemplateView):
@@ -75,3 +84,8 @@ class ContactView(TemplateView):
 
 class CartView(TemplateView):
      template_name =  'website/cart.html'
+
+
+
+class CheckoutView(TemplateView):
+     template_name =  'website/checkout.html'     
