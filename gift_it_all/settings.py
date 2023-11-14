@@ -84,7 +84,7 @@ INSTALLED_APPS = [
     'django_tables2',
     'rest_framework',
     'rest_framework.authtoken',
-    # 'oscarapi',
+    'oscarapi',
 
     # GIFT_IT_ALL apps
     'accounts',
@@ -113,8 +113,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     # 2 middleware for django oscar
-    'oscar.apps.basket.middleware.BasketMiddleware',
-    # 'oscarapi.middleware.ApiBasketMiddleWare',
+    # 'oscar.apps.basket.middleware.BasketMiddleware',
+    'oscarapi.middleware.ApiBasketMiddleWare',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -251,6 +251,7 @@ STATICFILES_DIRS = (
 OSCAR_SHOP_NAME = 'GIFT IT ALL'
 
 OSCAR_DEFAULT_CURRENCY = 'USD'
+OSCARAPI_BLOCK_ADMIN_API_ACCESS = False
 
 OSCAR_HOMEPAGE = reverse_lazy('website:homepage')
 

@@ -26,7 +26,8 @@ urlpatterns = [
     # Nonetheless, it's often useful for debugging.
     path('admin/', admin.site.urls),
     path("", include("website.urls")),
-    path('', include(apps.get_app_config('oscar').urls[0]))
+    path('', include(apps.get_app_config('oscar').urls[0])),
+    path("api/", include("oscarapi.urls"))
 ]
 
 urlpatterns += static('/media/', document_root=settings.MEDIA_ROOT)

@@ -50,6 +50,6 @@ class CatalogueConfig(apps.CatalogueConfig):
             # url(r'^product-list-filter$', self.product_list_filter_view.as_view(), name='product_list_filter'),
             # url(r'^dietitian_advice_list$', self.dietitian_advice_list_view.as_view(), name='dietitian_advice_list'),
             # url(r'^blog_list/$', self.blog_list_redirect.as_view(), name='blog_list_redirect'),
-            # url(r'^api/', include('catalogue.api.urls')),
+            url(r'^api/', include('catalogue.api.urls')),
         ]
         return self.post_process_urls(urls)
