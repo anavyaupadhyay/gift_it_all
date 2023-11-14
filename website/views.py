@@ -5,6 +5,7 @@ from django.views.generic import (
     ListView,
     DetailView,
 )
+from django.db.models import Q
 
 from oscar.core.loading import get_class, get_model
 
@@ -19,31 +20,22 @@ class HomePageView(TemplateView):
     """
     template_name = 'website/homepage.html'
 
+    def get_context_data(self, **kwargs):
+        context = super(self.__class__, self).get_context_data(**kwargs)
+        context['products']=Product.objects.all()
+        return context      
 
-    # def get_context_data(self, **kwargs):
-    #     context = super(self.__class__, self).get_context_data(**kwargs)
-    #     if cache.get('banner_image_objects'):
-    #         context['banner_image_objects']=cache.get('banner_image_objects')
-    #     else:    
-    #         context['banner_image_objects'] = BannerImages.objects.filter(is_active=True)
-    #         cache.set('banner_image_objects',context['banner_image_objects'])
-    #     if cache.get('featured_product'): 
-    #         context['featured_product']=cache.get('featured_product')
-    #     else:
-    #         context['featured_product'] = Product.objects.filter(is_featured=True).filter(structure='parent')[:4] 
-    #         cache.set('featured_product',context['featured_product'])
-    #     if cache.get('dietitions_and_nutritionists'):
-    #         context['dietitions_and_nutritionists']=cache.get('dietitions_and_nutritionists')
-    #     else:        
-    #         context['dietitions_and_nutritionists'] = DietitionsAndNutritionists.objects.filter(dietitions_and_nutritionists='Dietitions')
-    #         cache.set('dietitions_and_nutritionists',context['dietitions_and_nutritionists'])
-    #     return context
-
-class ProductListView(ListView):
-    model = Product
+class ProductListView(TemplateView):
     template_name = 'website/product_list.html'
-    paginate_by = 20
-    total_product = 0
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(ProductListView, self).get_context_data(*args, **kwargs)
+        products =  Product.objects.all()
+        category_slug = self.kwargs.get('slug', None)
+        context['products']= products
+        if category_slug and Category.objects.filter(slug=category_slug).exists():
+            context['products']= products.filter(categories__slug=category_slug)
+        return context 
 
 
     def dispatch(self, request, *args, **kwargs):
@@ -51,7 +43,7 @@ class ProductListView(ListView):
         category_slug = self.kwargs.get('slug', None)
         # 302 redirection in case of incorect url enter
         if category and Category.objects.filter(slug=category, depth=1, is_active=True).exists():
-            return HttpResponseRedirect(reverse('website:product_category', kwargs={'slug': category}))
+            return HttpResponseRedirect(reverse('catalogue:product_category', kwargs={'slug': category}))
 
         if category_slug and not Category.objects.filter(slug=category_slug).exists() and Product.objects.filter(slug=category_slug).exists():
             prod_obj = Product.objects.filter(slug=category_slug).first()
@@ -74,9 +66,26 @@ class ProductDetailView(TemplateView):
     slug_field = 'slug'   
    
     def get_context_data(self, *args, **kwargs):
-        context = super( ProductDetailView, self).get_context_data(*args, **kwargs)
-        context['product']=Product.objects.get(slug=self.kwargs['slug'])
+        context = super(ProductDetailView, self).get_context_data(*args, **kwargs)
+        products =  Product.objects.all()
+        context['product']=products.get(slug=self.kwargs['slug'])
+        context['products']= products.filter(~Q(slug=self.kwargs['slug']))
         return context 
     
+class LoginView(TemplateView):
+     template_name =  'website/login.html'
 
-    
+
+
+class ContactView(TemplateView):
+     template_name =  'website/contact_us.html'
+
+
+
+class CartView(TemplateView):
+     template_name =  'website/cart.html'
+
+
+
+class CheckoutView(TemplateView):
+     template_name =  'website/checkout.html'     

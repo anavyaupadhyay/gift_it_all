@@ -46,7 +46,7 @@
                 <!-- Header Logo Start -->
                 <div class="col">
                     <div class="header-logo justify-content-center">
-                        <a href="index.html"><img  src="{% static 'images/logo/app_logo1.svg' %}" alt="Gift it all"></a>
+                        <a href="{% url 'website:homepage' %}"> <img  src="{% static 'images/logo/logo_exp2.png' %}" height="80" width="80" alt="Gift it all"></a>
                     </div>
                 </div>
                 <!-- Header Logo End -->
@@ -61,10 +61,10 @@
                             <a href="#offcanvas-search" class="offcanvas-toggle"><i class="fas fa-search"></i></a>
                         </div>
                         <div class="header-wishlist">
-                            <a href="#offcanvas-wishlist" class="offcanvas-toggle"><span class="wishlist-count">3</span><i class="far fa-heart"></i></a>
+                            <a href="#offcanvas-wishlist" class="offcanvas-toggle"><span class="wishlist-count">2</span><i class="far fa-heart"></i></a>
                         </div>
                         <div class="header-cart">
-                            <a href="#offcanvas-cart" class="offcanvas-toggle"><span class="cart-count">3</span><i class="fas fa-shopping-cart"></i></a>
+                            <a href="#offcanvas-cart" class="offcanvas-toggle"><span class="cart-count">1</span><i class="fas fa-shopping-cart"></i></a>
                         </div>
                     </div>
                 </div>
@@ -74,67 +74,7 @@
         </div>
 
         <!-- Site Menu Section Start -->
-        <div class="site-menu-section section">
-            <div class="container">
-                <nav class="site-main-menu justify-content-center">
-                    <ul>
-                        <li><a href="#"><span class="menu-text">Home</span></a>
-                        </li>
-                        <!-- <li><a href="#"><span class="menu-text">Shop</span></a>
-                            <ul class="sub-menu mega-menu">
-                                <li>
-                                    <a href="#" class="mega-menu-title"><span class="menu-text">SHOP PAGES</span></a>
-                                    <ul>
-                                        <li><a href="shop.html"><span class="menu-text">Shop No Sidebar</span></a></li>
-                                        <li><a href="shop-left-sidebar.html"><span class="menu-text">Shop Left Sidebar</span></a></li>
-                                        <li><a href="shop-right-sidebar.html"><span class="menu-text">Shop Right Sidebar</span></a></li>
-                                        <li><a href="shop-fullwidth-no-gutters.html"><span class="menu-text">Shop Fullwidth No Space</span></a></li>
-                                        <li><a href="shop-fullwidth.html"><span class="menu-text">Shop Fullwidth No Sidebar</span></a></li>
-                                        <li><a href="shop-fullwidth-left-sidebar.html"><span class="menu-text">Shop Fullwidth Left Sidebar</span></a></li>
-                                        <li><a href="shop-fullwidth-right-sidebar.html"><span class="menu-text">Shop Fullwidth Right Sidebar</span></a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#" class="mega-menu-title"><span class="menu-text">PRODUCT PAGES</span></a>
-                                    <ul>
-                                        <li><a href="product-details.html"><span class="menu-text">Basic</span></a></li>
-                                        <li><a href="product-details-fullwidth.html"><span class="menu-text">Fullwidth</span></a></li>
-                                        <li><a href="product-details-sticky.html"><span class="menu-text">Sticky Details</span></a></li>
-                                        <li><a href="product-details-sidebar.html"><span class="menu-text">Width Sidebar</span></a></li>
-                                        <li><a href="product-details-extra-content.html"><span class="menu-text">Extra Content</span></a></li>
-                                        <li><a href="product-details-image-variation.html"><span class="menu-text">Variations Images</span></a></li>
-                                        <li><a href="product-details-group.html"><span class="menu-text">Bought Together</span></a></li>
-                                        <li><a href="product-details-360.html"><span class="menu-text">Product 360</span></a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#" class="mega-menu-title"><span class="menu-text">PRODUCT & Other PAGES</span></a>
-                                    <ul>
-                                        <li><a href="product-details-background.html"><span class="menu-text">Product with Background</span></a></li>
-                                        <li><a href="shopping-cart.html"><span class="menu-text">Shopping Cart</span></a></li>
-                                        <li><a href="checkout.html"><span class="menu-text">Checkout</span></a></li>
-                                        <li><a href="order-tracking.html"><span class="menu-text">Order Tracking</span></a></li>
-                                        <li><a href="wishlist.html"><span class="menu-text">Wishlist</span></a></li>
-                                        <li><a href="login-register.html"><span class="menu-text">Customer Login</span></a></li>
-                                        <li><a href="my-account.html"><span class="menu-text">My Account</span></a></li>
-                                        <li><a href="lost-password.html"><span class="menu-text">Lost Password</span></a></li>
-                                    </ul>
-                                </li>
-                                <li class="align-self-center">
-                                    <a href="#" class="menu-banner"><img src="{% static 'images/banner/menu-banner-2.webp' %}" alt="Shop Menu Banner"></a>
-                                </li>
-                            </ul></li>
-                         -->
-                        <!-- <li><a href="about-us.html"><span class="menu-text">About us</span></a></li> -->
-                        <li><a><span class="menu-text">Gift cards</span></a></li>
-                        <li><a><span class="menu-text">Greeting cards</span></a></li>
-                        <li><a href="contact-us.html"><span class="menu-text">Contact us</span></a></li>
-                        
-                        
-                    </ul>
-                </nav>
-            </div>
-        </div>
+
         <!-- Site Menu Section End -->
 
     </div>
@@ -148,7 +88,8 @@
                 <!-- Header Logo Start -->
                 <div class="col">
                     <div class="header-logo">
-                        <a href="index.html"><img src="{% static 'images/logo/app_logo1.svg' %}" alt="Gift it all"></a>
+                        <a href="index.html"><img src="{% static 'images/logo/logo_exp2.png' %}" height="55" width="55"
+                             alt="Gift it all"></a>
                     </div>
                 </div>
                 <!-- Header Logo End -->
@@ -157,11 +98,10 @@
                 <div class="col d-none d-xl-block">
                     <nav class="site-main-menu justify-content-center">
                         <ul>
-                            <li><a href="#"><span class="menu-text">Home</span></a>
-                            </li>
-                            <li><a><span class="menu-text">Gift cards</span></a></li>
-                        <li><a><span class="menu-text">Greeting cards</span></a></li>
-                        <li><a href="contact-us.html"><span class="menu-text">Contact us</span></a></li>
+                            <li><a href="#"><span class="menu-text">Home</span></a></li> 
+                            <li><a href="{% url 'website:product_list_category' slug='gift-cards'%}"><span class="menu-text">Gift cards</span></a></li>
+                            <li><a  href="{% url 'website:product_list_category' slug='greeting-cards'%}"><span class="menu-text">Greeting cards</span></a></li>
+                            <li><a href="contact-us.html"><span class="menu-text">Contact us</span></a></li> 
 
                         </ul>
                     </nav>
@@ -178,10 +118,10 @@
                             <a href="#offcanvas-search" class="offcanvas-toggle"><i class="fas fa-search"></i></a>
                         </div>
                         <div class="header-wishlist">
-                            <a href="#offcanvas-wishlist" class="offcanvas-toggle"><span class="wishlist-count">3</span><i class="far fa-heart"></i></a>
+                            <a href="#offcanvas-wishlist" class="offcanvas-toggle"><span class="wishlist-count">2</span><i class="far fa-heart"></i></a>
                         </div>
                         <div class="header-cart">
-                            <a href="#offcanvas-cart" class="offcanvas-toggle"><span class="cart-count">3</span><i class="fas fa-shopping-cart"></i></a>
+                            <a href="#offcanvas-cart" class="offcanvas-toggle"><span class="cart-count">1</span><i class="fas fa-shopping-cart"></i></a>
                         </div>
                         <div class="mobile-menu-toggle d-xl-none">
                             <a href="#offcanvas-mobile-menu" class="offcanvas-toggle">
@@ -375,29 +315,15 @@
             <div class="body customScroll">
                 <ul class="minicart-product-list">
                     <li>
-                        <a href="product-details.html" class="image"><img src="{% static 'images/product/cart-product-1.webp' %}" alt="Cart product Image"></a>
+                        <a href="product-details.html" class="image">
+                            <img src="{%static 'images/Untitled design (5).png' %}" alt="Cart product Image"></a>
                         <div class="content">
-                            <a href="product-details.html" class="title">Walnut Cutting Board</a>
-                            <span class="quantity-price">1 x <span class="amount">$100.00</span></span>
+                            <a href="product-details.html" class="title">Amazon GiftCard</a>
+                            <span class="quantity-price">1 x <span class="amount">$20.00</span></span>
                             <a href="#" class="remove">×</a>
                         </div>
                     </li>
-                    <li>
-                        <a href="product-details.html" class="image"><img src="{% static 'images/product/cart-product-2.webp' %}" alt="Cart product Image"></a>
-                        <div class="content">
-                            <a href="product-details.html" class="title">Lucky Wooden Elephant</a>
-                            <span class="quantity-price">1 x <span class="amount">$35.00</span></span>
-                            <a href="#" class="remove">×</a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="product-details.html" class="image"><img src="{% static 'images/product/cart-product-3.webp' %}" alt="Cart product Image"></a>
-                        <div class="content">
-                            <a href="product-details.html" class="title">Fish Cut Out Set</a>
-                            <span class="quantity-price">1 x <span class="amount">$9.00</span></span>
-                            <a href="#" class="remove">×</a>
-                        </div>
-                    </li>
+                   
                 </ul>
             </div>
             <div class="foot">
@@ -406,8 +332,8 @@
                     <span class="amount">$144.00</span>
                 </div>
                 <div class="buttons">
-                    <a href="shopping-cart.html" class="btn btn-dark btn-hover-primary">view cart</a>
-                    <a href="checkout.html" class="btn btn-outline-dark">checkout</a>
+                    <a href="{% url 'website:cart' %}" class="btn btn-dark btn-hover-primary">view cart</a>
+                    <a href="{% url 'website:checkout' %}" class="btn btn-outline-dark">checkout</a>
                 </div>
                 <p class="minicart-message">Free Shipping on All Orders Over $100!</p>
             </div>
